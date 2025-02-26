@@ -18,7 +18,7 @@ export function CharacterCard({ info }: { info: CharacterInfo }) {
       {/* Avatar image positioned above card */}
       <div className="absolute -top-4 right-8 w-36 h-36 z-10">
         <Image
-          src={info.imageUrl || "public\charlie-avatar.png"}
+          src={info.imageUrl || "/charlie-avatar.png"}
           alt={`Avatar of ${info.name}`}
           fill
           className="object-cover rounded-lg shadow-lg"

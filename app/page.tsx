@@ -17,7 +17,7 @@ const characterInfo = {
   pet: "chocolate lab puppy named Beaver",
   magicalElement: "Charlie loves everything about dinosaurs",
   specialSkill: "Charlie wants to climb a volcano and watch it explode",
-  imageUrl: "public\charlie-avatar.png", // Updated to use local path
+  imageUrl: "/charlie-avatar.png", // Updated to use local path
 }
 
 export default function Home() {
@@ -59,7 +59,7 @@ export default function Home() {
             <CharacterCard info={characterInfo} />
             <div className="md:self-center">
               <AudioPlayer
-                src="public\charlie-audio.mp3" // Updated to use local path
+                src="/charlie-audio.mp3" // Updated to use local path
                 title="Charlie's Volcano Adventure"
               />
             </div>
