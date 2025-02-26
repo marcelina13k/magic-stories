@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   title: "Personalized Audio Adventures",
   description: "Create personalized audio stories for your children",
   metadataBase: new URL(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"),
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -31,6 +30,3 @@ export default function RootLayout({
   )
 }
 
-
-
-import './globals.css'

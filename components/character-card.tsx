@@ -68,4 +68,3 @@ export function CharacterCard({ info }: { info: CharacterInfo }) {
     </div>
   )
 }
-
