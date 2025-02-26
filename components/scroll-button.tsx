@@ -11,7 +11,7 @@ export function ScrollButton() {
         document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" })
       }}
     >
-      Join the Waitlist
+      Craft Your Child's First Story
     </Button>
   )
 }

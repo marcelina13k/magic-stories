@@ -42,6 +42,10 @@ export default function Home() {
       {/* Waitlist Form Section */}
       <section id="waitlist" className="py-12 px-4 bg-gradient-to-b from-pink-50 to-orange-50">
         <div className="mx-auto max-w-md">
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Join the Waitlist</h2>
+            <p className="text-gray-600">Be the first to know when we launch!</p>
+          </div>
           <TallyForm />
         </div>
       </section>
@@ -52,7 +56,7 @@ export default function Home() {
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">Experience the Magic</h2>
             <p className="text-gray-600 text-lg">
-              Press play to hear what your child's personalized story could sound like
+            Meet Charlie — a brave explorer whose story was crafted from his favorite things. Your child’s journey will be just as magical.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-12 items-center">
