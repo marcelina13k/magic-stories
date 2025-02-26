@@ -32,19 +32,18 @@ export default function Home() {
             <span className="block">Where Your Child Is The Star</span>
           </h1>
           <p className="mx-auto max-w-[700px] text-gray-600 md:text-xl">
-            We create one-of-a-kind audio stories designed just for your little one — crafted from the details you
-            provide and delivered straight to your inbox.
+            Ignite your child’s imagination with one-of-a-kind, magical stories crafted from their favorite things and wildest dreams.
           </p>
           <ScrollButton />
         </div>
       </section>
 
       {/* Waitlist Form Section */}
-      <section id="waitlist" className="py-12 px-4 bg-gradient-to-b from-pink-50 to-orange-50">
+      <section id="waitlist" className="py-24 px-4 bg-gradient-to-b from-pink-50 to-orange-50">
         <div className="mx-auto max-w-md">
           <div className="text-center space-y-4">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Join the Waitlist</h2>
-            <p className="text-gray-600">Be the first to know when we launch!</p>
+            <p className="text-gray-600">We’re launching soon! Be the first to bring the magic home.</p>
           </div>
           <TallyForm />
         </div>
