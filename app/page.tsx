@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Lock } from "lucide-react"
-import { ScrollButton } from "@/components/scroll-button"
+import Link from "next/link"
 import { TallyForm } from "@/components/tally-form"
 import { NavBar } from "@/components/nav-bar"
 import { CharacterCard } from "@/components/character-card"
@@ -39,7 +39,9 @@ export default function Home() {
             wildest dreams.
           </p>
           <div className="pt-4">
-            <ScrollButton />
+            <Button asChild>
+              <Link href="/create-story">Start Crafting Their First Story</Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -72,6 +74,11 @@ export default function Home() {
             <div className="md:self-center">
               <AudioPlayer src="/charlie-audio.mp3" title="Charlie's Volcano Adventure" />
             </div>
+          </div>
+          <div className="text-center mt-8">
+            <Button asChild size="lg" className="bg-orange-500 hover:bg-orange-600">
+              <Link href="/create-story">Create Your Child's Story Now</Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -120,4 +127,3 @@ export default function Home() {
     </div>
   )
 }
-
