@@ -1,14 +1,13 @@
 import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { Lock } from "lucide-react"
 import Link from "next/link"
-import { TallyForm } from "@/components/tally-form"
 import { NavBar } from "@/components/nav-bar"
 import { CharacterCard } from "@/components/character-card"
 import { AudioPlayer } from "@/components/audio-player"
 import { WhyMagicStories } from "@/components/why-magic-stories"
 import { HowItWorks } from "@/components/how-it-works"
 import { Testimonials } from "@/components/testimonials"
+import { Footer } from "@/components/footer"
+import { FAQ } from "@/components/faq"
 
 const characterInfo = {
   name: "Charlie",
@@ -39,21 +38,16 @@ export default function Home() {
             wildest dreams.
           </p>
           <div className="pt-4">
-            <Button asChild>
-              <Link href="/create-story">Start Crafting Their First Story</Link>
+            <Button
+              asChild
+              className="bg-orange-500 hover:bg-orange-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              <Link href="/create-story">
+                Start Crafting Their First Story
+                <span className="ml-2 animate-pulse">→</span>
+              </Link>
             </Button>
           </div>
-        </div>
-      </section>
-
-      {/* Waitlist Form Section */}
-      <section id="waitlist" className="py-24 px-4 bg-white">
-        <div className="mx-auto max-w-md">
-          <div className="text-center space-y-4">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Join the Waitlist</h2>
-            <p className="text-gray-600">We're launching soon! Be the first to bring the magic home.</p>
-          </div>
-          <TallyForm />
         </div>
       </section>
 
@@ -76,8 +70,15 @@ export default function Home() {
             </div>
           </div>
           <div className="text-center mt-8">
-            <Button asChild size="lg" className="bg-orange-500 hover:bg-orange-600">
-              <Link href="/create-story">Create Your Child's Story Now</Link>
+            <Button
+              asChild
+              size="lg"
+              className="bg-orange-500 hover:bg-orange-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              <Link href="/create-story">
+                Create Your Child's Story Now
+                <span className="ml-2 animate-pulse">→</span>
+              </Link>
             </Button>
           </div>
         </div>
@@ -87,43 +88,10 @@ export default function Home() {
 
       <Testimonials background="bg-white" />
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-24 px-4 bg-gradient-to-b from-orange-50 to-pink-50">
-        <div className="mx-auto max-w-5xl space-y-8">
-          <div className="text-center space-y-4">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Subscription Plans (Coming Soon)</h2>
-            <p className="text-gray-600">Join the wait list and be the first to find out when we launch!</p>
-          </div>
-          <div className="grid gap-8 md:grid-cols-2">
-            <Card className="p-6 opacity-60">
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-xl font-bold">Monthly Plan</h3>
-                  <Lock className="text-gray-400" />
-                </div>
-                <div className="text-3xl font-bold">$ / month</div>
-                <p className="text-gray-600">Perfect for trying out our service</p>
-                <Button disabled className="w-full">
-                  Coming Soon
-                </Button>
-              </div>
-            </Card>
-            <Card className="p-6 opacity-60">
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-xl font-bold">Annual Plan</h3>
-                  <Lock className="text-gray-400" />
-                </div>
-                <div className="text-3xl font-bold">$ / year</div>
-                <p className="text-gray-600">Best value for committed listeners</p>
-                <Button disabled className="w-full">
-                  Coming Soon
-                </Button>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </section>
+      {/* FAQ Section */}
+      <FAQ />
+
+      <Footer />
     </div>
   )
 }

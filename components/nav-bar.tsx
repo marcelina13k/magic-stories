@@ -1,14 +1,18 @@
 "use client"
 
 import { cn } from "@/lib/utils"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 export function NavBar() {
-  const scrollToSection = (id: string) => {
-    const element =
-      id === "top"
-        ? window.scrollTo({ top: 0, behavior: "smooth" })
-        : document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
-  }
+  const pathname = usePathname()
+
+  const navItems = [
+    { name: "Home", href: "/" },
+    { name: "Pricing", href: "/subscription-plans" },
+    { name: "FAQ", href: "/#faq" },
+    { name: "Contact", href: "/#footer" },
+  ]
 
   return (
     <nav
@@ -19,20 +23,25 @@ export function NavBar() {
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-end h-16">
+        <div className="flex justify-between h-16">
+          <div className="flex items-center">
+            <Link href="/" className="text-xl font-bold text-orange-500">
+              Magic Stories
+            </Link>
+          </div>
           <div className="flex space-x-8 items-center">
-            <button
-              onClick={() => scrollToSection("top")}
-              className="text-sm font-light text-gray-600 hover:text-gray-900 transition-colors"
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={cn(
+                  "text-sm font-medium transition-colors",
+                  pathname === item.href ? "text-orange-500" : "text-gray-600 hover:text-gray-900",
+                )}
             >
-              Home
-            </button>
-            <button
-              onClick={() => scrollToSection("pricing")}
-              className="text-sm font-light text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              Subscribe
-            </button>
+              {item.name}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import SubscriptionPlans from "@/components/SubscriptionPlans"
 
 export default function StoryForm() {
   const router = useRouter()
@@ -21,6 +20,7 @@ export default function StoryForm() {
     specialInterests: "",
     specialSkill: "",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -32,14 +32,9 @@ export default function StoryForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    setIsSubmitting(true)
     localStorage.setItem("storyFormData", JSON.stringify(formData))
-    setShowPlans(true)
-  }
-
-  const [showPlans, setShowPlans] = useState(false)
-
-  if (showPlans) {
-    return <SubscriptionPlans formData={formData} />
+    router.push("/subscription-plans")
   }
 
   return (
@@ -100,7 +95,14 @@ export default function StoryForm() {
         <Label htmlFor="specialSkill">Special skill or dream</Label>
         <Input id="specialSkill" name="specialSkill" value={formData.specialSkill} onChange={handleChange} required />
       </div>
-      <Button type="submit">Choose Your Plan</Button>
+      <Button
+        type="submit"
+        className="w-full bg-orange-500 hover:bg-orange-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? "Submitting..." : "Choose Your Plan"}
+        {!isSubmitting && <span className="ml-2 animate-pulse">→</span>}
+      </Button>
     </form>
   )
 }
