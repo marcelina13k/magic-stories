@@ -13,6 +13,8 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Price ID is required" }, { status: 400 })
     }
 
+    console.log("Price ID:", req.body.priceId);
+
     // create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
