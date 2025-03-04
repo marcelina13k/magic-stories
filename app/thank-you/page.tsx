@@ -15,7 +15,7 @@ export default function ThankYouPage() {
             child!
           </p>
           <p className="mb-8">
-            You should receive a confirmation email shortly with all the details you provided. If you don't see it,
+            You should receive a confirmation email shortly with all the details you provided. If you don't see it, please check your spam folder or contact us.
           </p>
           <Button asChild className="bg-orange-500 hover:bg-orange-600">
             <Link href="/">Return to Home</Link>
