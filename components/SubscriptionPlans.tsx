@@ -46,7 +46,7 @@ export default function SubscriptionPlans() {
             <p className="text-3xl font-bold">$12/month</p>
             <Button
               className="mt-4 w-full bg-orange-500 hover:bg-orange-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-              onClick={() => handleSubscription("price_1QxzPoJ8mwOAaXHXSlip1ZWI")}
+              onClick={() => handleSubscription("price_1QxgZhR7401oQmTZGcfUiMMz")}
               disabled={loading}
             >
               {loading ? "Processing..." : "Subscribe Monthly"}
@@ -63,7 +63,7 @@ export default function SubscriptionPlans() {
             <p className="text-3xl font-bold">$99/year</p>
             <Button
               className="mt-4 w-full bg-orange-500 hover:bg-orange-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-              onClick={() => handleSubscription("price_1QxzQCJ8mwOAaXHXEmtM3VH5")}
+              onClick={() => handleSubscription("price_1QxgmER7401oQmTZfIBsVnXF")}
               disabled={loading}
             >
               {loading ? "Processing..." : "Subscribe Yearly"}
