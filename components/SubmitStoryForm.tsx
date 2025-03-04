@@ -78,8 +78,8 @@ export function SubmitStoryForm({ initialData = {} }: Props) {
         throw new Error("Failed to submit to Google Sheets")
       }
 
-      // Send confirmation email
-      const emailResponse = await fetch("/api/send-confirmation", {
+      // Send confirmation email using the new endpoint
+      const emailResponse = await fetch("/api/send-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
