@@ -1,4 +1,5 @@
-import { Instagram, Mail, InstagramIcon as BrandTiktok } from "lucide-react"
+import { Instagram, Mail } from "lucide-react"
+import { TikTokIcon } from "./icons/tiktok-icon"
 
 export function Footer() {
   return (
@@ -13,7 +14,12 @@ export function Footer() {
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <div className="flex items-center gap-2 text-gray-600">
               <Mail className="h-5 w-5 transition-transform hover:-translate-y-1" />
-              <a href="mailto:magicstories13@gmail.com" className="hover:text-orange-500 transition-colors">
+              <a
+                href="mailto:magicstories13@gmail.com"
+                className="hover:text-orange-500 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 magicstories13@gmail.com
               </a>
             </div>
@@ -27,7 +33,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-orange-500 transition-colors"
               >
-                <BrandTiktok className="h-6 w-6 transition-transform hover:-translate-y-1" />
+                <TikTokIcon className="h-6 w-6 transition-transform hover:-translate-y-1" />
                 <span className="sr-only">TikTok</span>
               </a>
               <a

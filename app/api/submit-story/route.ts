@@ -19,6 +19,8 @@ export async function POST(req: Request) {
       requestBody: {
         values: [
           [
+            body.parentName,
+            body.parentEmail,
             body.childName,
             body.childAge,
             body.childPronouns,
