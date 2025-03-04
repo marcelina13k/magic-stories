@@ -20,7 +20,7 @@ export async function POST(req: Request) {
 
       <p>We've received your story details for <strong>${data.childName}</strong>! Our team is already working on crafting a magical, personalized audio adventure for your child. Here's a quick recap of what you shared:</p>
 
-      <ul>
+      <ul style="list-style-type: none; padding-left: 0;">
         <li><strong>Child's Name:</strong> ${data.childName}</li>
         <li><strong>Age:</strong> ${data.childAge}</li>
         <li><strong>Pronouns:</strong> ${data.childPronouns}</li>
@@ -43,17 +43,19 @@ export async function POST(req: Request) {
       <p>The Magic Stories Team</p>
     `
 
-    await transporter.sendMail({
+    const mailOptions = {
       from: "magicstories13@gmail.com",
       to: data.parentEmail,
       subject: "✨ Your Child's Story Details Have Been Submitted!",
       html: emailContent,
-    })
+    }
+
+    await transporter.sendMail(mailOptions)
 
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error("Email sending error:", error)
-    return NextResponse.json({ error: "Failed to send email" }, { status: 500 })
+    return NextResponse.json({ error: "Failed to send email", details: error.message }, { status: 500 })
   }
 }
 

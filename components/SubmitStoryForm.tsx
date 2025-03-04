@@ -35,8 +35,8 @@ export function SubmitStoryForm({ initialData = {} }: Props) {
   const router = useRouter()
   const [isEditing, setIsEditing] = useState(false)
   const [formData, setFormData] = useState<FormData>({
-    parentName: "",
-    parentEmail: "",
+    parentName: initialData.parentName || "",
+    parentEmail: initialData.parentEmail || "",
     childName: initialData.childName || "",
     childAge: initialData.childAge || "",
     childPronouns: initialData.childPronouns || "",
@@ -50,25 +50,28 @@ export function SubmitStoryForm({ initialData = {} }: Props) {
     childFear: initialData.childFear || "",
     storyLesson: initialData.storyLesson || "",
   })
+  const [tempFormData, setTempFormData] = useState<FormData>(formData)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
+    setTempFormData({ ...tempFormData, [e.target.name]: e.target.value })
   }
 
   const handleAgeChange = (value: string) => {
-    setFormData({ ...formData, childAge: value })
+    setTempFormData({ ...tempFormData, childAge: value })
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
+      const dataToSubmit = isEditing ? tempFormData : formData
+
       // Submit to Google Sheets
       const sheetResponse = await fetch("/api/submit-story", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(dataToSubmit),
       })
 
       if (!sheetResponse.ok) {
@@ -81,19 +84,30 @@ export function SubmitStoryForm({ initialData = {} }: Props) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(dataToSubmit),
       })
 
       if (!emailResponse.ok) {
-        throw new Error("Failed to send confirmation email")
+        const errorData = await emailResponse.json()
+        throw new Error(errorData.error || "Failed to send confirmation email")
       }
 
-      localStorage.removeItem("storyFormData")
-      router.push("/thank-you")
+      if (isEditing) {
+        setFormData(tempFormData)
+        setIsEditing(false)
+      } else {
+        localStorage.removeItem("storyFormData")
+        router.push("/thank-you")
+      }
 
     } catch (error) {
       console.error("Error submitting story:", error)
     }
+  }
+
+  const handleCancel = () => {
+    setTempFormData(formData)
+    setIsEditing(false)
   }
 
   const ReviewField = ({ label, value }: { label: string; value: string }) => (
@@ -127,7 +141,13 @@ export function SubmitStoryForm({ initialData = {} }: Props) {
             <div className="space-y-4">
               <div>
                 <Label htmlFor="parentName">Your Name</Label>
-                <Input id="parentName" name="parentName" value={formData.parentName} onChange={handleChange} required />
+                <Input
+                  id="parentName"
+                  name="parentName"
+                  value={tempFormData.parentName}
+                  onChange={handleChange}
+                  required
+                />
               </div>
               <div>
                 <Label htmlFor="parentEmail">Your Email</Label>
@@ -135,18 +155,24 @@ export function SubmitStoryForm({ initialData = {} }: Props) {
                   id="parentEmail"
                   name="parentEmail"
                   type="email"
-                  value={formData.parentEmail}
+                  value={tempFormData.parentEmail}
                   onChange={handleChange}
                   required
                 />
               </div>
               <div>
                 <Label htmlFor="childName">Child's first name</Label>
-                <Input id="childName" name="childName" value={formData.childName} onChange={handleChange} required />
+                <Input
+                  id="childName"
+                  name="childName"
+                  value={tempFormData.childName}
+                  onChange={handleChange}
+                  required
+                />
               </div>
               <div>
                 <Label htmlFor="childAge">Child's age</Label>
-                <Select onValueChange={handleAgeChange} value={formData.childAge}>
+                <Select onValueChange={handleAgeChange} value={tempFormData.childAge}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select age" />
                   </SelectTrigger>
@@ -164,7 +190,7 @@ export function SubmitStoryForm({ initialData = {} }: Props) {
                 <Input
                   id="childPronouns"
                   name="childPronouns"
-                  value={formData.childPronouns}
+                  value={tempFormData.childPronouns}
                   onChange={handleChange}
                   required
                 />
@@ -174,7 +200,7 @@ export function SubmitStoryForm({ initialData = {} }: Props) {
                 <Input
                   id="favoriteToy"
                   name="favoriteToy"
-                  value={formData.favoriteToy}
+                  value={tempFormData.favoriteToy}
                   onChange={handleChange}
                   required
                 />
@@ -184,7 +210,7 @@ export function SubmitStoryForm({ initialData = {} }: Props) {
                 <Input
                   id="favoriteActivities"
                   name="favoriteActivities"
-                  value={formData.favoriteActivities}
+                  value={tempFormData.favoriteActivities}
                   onChange={handleChange}
                   required
                 />
@@ -194,7 +220,7 @@ export function SubmitStoryForm({ initialData = {} }: Props) {
                 <Input
                   id="favoritePlace"
                   name="favoritePlace"
-                  value={formData.favoritePlace}
+                  value={tempFormData.favoritePlace}
                   onChange={handleChange}
                   required
                 />
@@ -204,7 +230,7 @@ export function SubmitStoryForm({ initialData = {} }: Props) {
                 <Input
                   id="favoriteColor"
                   name="favoriteColor"
-                  value={formData.favoriteColor}
+                  value={tempFormData.favoriteColor}
                   onChange={handleChange}
                   required
                 />
@@ -214,7 +240,7 @@ export function SubmitStoryForm({ initialData = {} }: Props) {
                 <Input
                   id="specialInterests"
                   name="specialInterests"
-                  value={formData.specialInterests}
+                  value={tempFormData.specialInterests}
                   onChange={handleChange}
                 />
               </div>
@@ -223,7 +249,7 @@ export function SubmitStoryForm({ initialData = {} }: Props) {
                 <Input
                   id="specialSkill"
                   name="specialSkill"
-                  value={formData.specialSkill}
+                  value={tempFormData.specialSkill}
                   onChange={handleChange}
                   required
                 />
@@ -233,7 +259,7 @@ export function SubmitStoryForm({ initialData = {} }: Props) {
                 <Input
                   id="childDescription"
                   name="childDescription"
-                  value={formData.childDescription}
+                  value={tempFormData.childDescription}
                   onChange={handleChange}
                   required
                 />
@@ -242,17 +268,17 @@ export function SubmitStoryForm({ initialData = {} }: Props) {
                 <Label htmlFor="childFear">
                   A fear they're working through (darkness, heights, being alone) (Optional)
                 </Label>
-                <Input id="childFear" name="childFear" value={formData.childFear} onChange={handleChange} />
+                <Input id="childFear" name="childFear" value={tempFormData.childFear} onChange={handleChange} />
               </div>
               <div>
                 <Label htmlFor="storyLesson">
                   Anything you'd like the story to gently teach or inspire? (kindness, patience, bravery) (Optional)
                 </Label>
-                <Input id="storyLesson" name="storyLesson" value={formData.storyLesson} onChange={handleChange} />
+                <Input id="storyLesson" name="storyLesson" value={tempFormData.storyLesson} onChange={handleChange} />
               </div>
             </div>
             <div className="flex gap-4">
-              <Button type="button" variant="outline" onClick={() => setIsEditing(false)}>
+              <Button type="button" variant="outline" onClick={handleCancel}>
                 Cancel
               </Button>
               <Button type="submit" className="bg-orange-500 hover:bg-orange-600">

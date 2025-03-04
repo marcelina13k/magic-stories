@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Input } from "@/components/ui/input"
@@ -12,6 +11,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 export default function StoryForm() {
   const router = useRouter()
   const [formData, setFormData] = useState({
+    parentName: "",
+    parentEmail: "",
     childName: "",
     childAge: "",
     childPronouns: "",
@@ -44,6 +45,21 @@ export default function StoryForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      <div>
+        <Label htmlFor="parentName">Your Name</Label>
+        <Input id="parentName" name="parentName" value={formData.parentName} onChange={handleChange} required />
+      </div>
+      <div>
+        <Label htmlFor="parentEmail">Your Email</Label>
+        <Input
+          id="parentEmail"
+          name="parentEmail"
+          type="email"
+          value={formData.parentEmail}
+          onChange={handleChange}
+          required
+        />
+      </div>
       <div>
         <Label htmlFor="childName">Child's first name</Label>
         <Input id="childName" name="childName" value={formData.childName} onChange={handleChange} required />
