@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { ContactPopup } from "./contact-popup"
 
 export function NavBar() {
   const pathname = usePathname()
@@ -11,7 +12,6 @@ export function NavBar() {
     { name: "Home", href: "/" },
     { name: "Pricing", href: "/subscription-plans" },
     { name: "FAQ", href: "/#faq" },
-    { name: "Contact", href: "/#footer" },
   ]
 
   return (
@@ -42,6 +42,7 @@ export function NavBar() {
               {item.name}
               </Link>
             ))}
+            <ContactPopup />
           </div>
         </div>
       </div>
