@@ -5,6 +5,7 @@ import "./globals.css"
 import { Providers } from "./providers"
 import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@vercel/analytics/react"
+import { PersistentCTA } from "@/components/persistent-cta"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           {children}
+          <PersistentCTA />
           <Analytics />
           <Toaster />
         </Providers>

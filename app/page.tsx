@@ -39,6 +39,7 @@ export default function Home() {
           </p>
           <div className="pt-4">
             <Button
+              id="main-cta"
               asChild
               className="bg-orange-500 hover:bg-orange-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
             >
@@ -50,8 +51,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <WhyMagicStories background="bg-gradient-to-b from-orange-50 to-pink-50" />
 
       {/* Experience Section */}
       <section className="py-24 px-4 bg-white">
@@ -83,6 +82,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <WhyMagicStories background="bg-gradient-to-b from-orange-50 to-pink-50" />
 
       <HowItWorks background="bg-gradient-to-b from-pink-50 to-orange-50" />
 

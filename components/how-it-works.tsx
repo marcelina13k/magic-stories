@@ -2,6 +2,7 @@
 
 import { Share2, Wand2, Headphones } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 const steps = [
   {
@@ -21,20 +22,6 @@ const steps = [
   },
 ]
 
-function StartButton() {
-  return (
-    <Button
-      size="lg"
-      className="bg-orange-500 hover:bg-orange-600"
-      onClick={() => {
-        document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" })
-      }}
-    >
-      Start Your Child's Story
-    </Button>
-  )
-}
-
 export function HowItWorks({ background = "bg-white" }: { background?: string }) {
   return (
     <section className={`py-24 px-4 ${background}`}>
@@ -44,7 +31,7 @@ export function HowItWorks({ background = "bg-white" }: { background?: string })
         </h2>
         <div className="flex flex-col md:flex-row justify-between items-start mb-16">
           {steps.map((step, index) => (
-            <div key={index} className="flex flex-col items-center text-center md:w-1/3 mb-8 md:mb-0">
+            <div key={index} className="flex flex-col items-center text-center md:w-1/4 mb-8 md:mb-0">
               <div className="bg-orange-100 rounded-full p-4 mb-4">{step.icon}</div>
               <h3 className="text-xl font-semibold mb-2">
                 {index + 1}. {step.title}
@@ -54,7 +41,9 @@ export function HowItWorks({ background = "bg-white" }: { background?: string })
           ))}
         </div>
         <div className="text-center">
-          <StartButton />
+          <Button asChild size="lg" className="bg-orange-500 hover:bg-orange-600">
+            <Link href="/create-story">Start Your Child's Story</Link>
+          </Button>
         </div>
       </div>
     </section>

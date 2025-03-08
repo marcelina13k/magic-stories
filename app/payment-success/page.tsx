@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react"
 import { NavBar } from "@/components/nav-bar"
 import { SubmitStoryForm } from "@/components/SubmitStoryForm"
+import { ProgressIndicator } from "@/components/progress-indicator"
+import { Footer } from "@/components/footer"
 
 export default function PaymentSuccessPage() {
   const [formData, setFormData] = useState<Record<string, string> | null>(null)
@@ -25,6 +27,7 @@ export default function PaymentSuccessPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-orange-50 to-pink-50">
       <NavBar />
+      <ProgressIndicator />
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-3xl font-bold mb-8 text-center">Thanks for subscribing!</h1>
         {formData ? (
@@ -37,6 +40,7 @@ export default function PaymentSuccessPage() {
           </p>
         )}
       </div>
+      <Footer />
     </div>
   )
 }
