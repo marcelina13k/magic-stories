@@ -44,7 +44,7 @@ export function PersistentCTA() {
     >
       <Button
         asChild
-        className="bg-orange-500 hover:bg-orange-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-100 animate-pulse"
+        className="bg-orange-500 hover:bg-orange-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-800 animate-pulse"
         size="lg"
       >
         <Link href="/create-story">
