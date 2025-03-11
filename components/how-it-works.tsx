@@ -13,7 +13,7 @@ const steps = [
   {
     icon: <Wand2 className="h-8 w-8 text-orange-500" />,
     title: "We Create a Magical Tale",
-    description: "Our AI-powered storyteller crafts a unique audio adventure starring your child.",
+    description: "Our storytellers craft a unique audio adventure starring your child.",
   },
   {
     icon: <Headphones className="h-8 w-8 text-orange-500" />,

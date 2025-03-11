@@ -43,7 +43,7 @@ export default function SubscriptionPlans() {
             <CardDescription>Perfect for trying out our service</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold">$12/month</p>
+            <p className="text-3xl font-bold">$11/month</p>
             <Button
               className="mt-4 w-full bg-orange-500 hover:bg-orange-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               onClick={() => handleSubscription("price_1QxzPoJ8mwOAaXHXSlip1ZWI")}
@@ -57,7 +57,7 @@ export default function SubscriptionPlans() {
         <Card>
           <CardHeader>
             <CardTitle>Yearly Plan</CardTitle>
-            <CardDescription>Best value for committed listeners</CardDescription>
+            <CardDescription>Best value for committed listeners. Save 25% with annual!</CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-3xl font-bold">$99/year</p>
